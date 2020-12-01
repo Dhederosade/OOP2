@@ -1,4 +1,4 @@
-package com.satria.oop
+package com.oop.oop2
 
 import androidx.room.Dao
 import androidx.room.Delete
