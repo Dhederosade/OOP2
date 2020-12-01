@@ -1,4 +1,4 @@
-package com.rizkihanip.oop2
+package com.oop.oop2
 
 import org.junit.Test
 

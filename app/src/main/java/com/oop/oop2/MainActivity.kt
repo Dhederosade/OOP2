@@ -1,4 +1,4 @@
-package com.rizkihanip.oop2
+package com.oop.oop2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
