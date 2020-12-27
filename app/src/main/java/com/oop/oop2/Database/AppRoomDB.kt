@@ -1,16 +1,19 @@
-package com.example.crudapp.Database
+package com.oop.oop2.Database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.oop.oop2.Database.Siswa
+import com.oop.oop2.Database.SiswaDao
 
-@Database(entities = arrayOf(Helm::class, User::class), version = 1)
 
+@Database(entities = arrayOf(Siswa::class), version = 1)
+// ,Guru::class
 abstract class AppRoomDB : RoomDatabase() {
 
-    abstract fun helmDao(): HelmDao
-    abstract fun userDao(): UserDao
+    abstract fun siswaDao(): SiswaDao
+//    abstract fun guruDao(): GuruDao
 
     companion object {
 
