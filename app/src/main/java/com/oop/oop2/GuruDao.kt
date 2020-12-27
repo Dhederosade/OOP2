@@ -4,15 +4,14 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.oop.oop2.DataGuru
 
 @Dao
 interface GuruDao {
     @Query("SELECT * FROM guru")
-    fun getAll(): List<DataSiswa>
+    fun getAll(): List<DataGuru>
 
     @Query("SELECT * FROM guru WHERE nip IN (:userIds)")
-    fun loadAllByIds(userIds: IntArray): List<DataSiswa>
+    fun loadAllByIds(userIds: IntArray): List<DataGuru>
 
     @Query("SELECT * FROM guru WHERE nama LIKE :nama AND " +
             "pengampu LIKE :pengampu LIMIT 1")
