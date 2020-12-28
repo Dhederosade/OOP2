@@ -34,6 +34,14 @@ class EditSiswaActivity : AppCompatActivity() {
                 finish()
             }
         }
+        btn_updateSiswa.setOnClickListener{
+            CoroutineScope(Dispatchers.IO).launch {
+                db.siswaDao().updateSiswa(
+                    Siswa(siswaId, txt_nama.text.toString(), Integer.parseInt(txt_nis.text.toString()), Integer.parseInt(txt_kelas.text.toString()) )
+                )
+                finish()
+            }
+        }
     }
 
     fun setupView() {
@@ -41,9 +49,14 @@ class EditSiswaActivity : AppCompatActivity() {
         val intentType = intent.getIntExtra("intent_type", 0)
         when (intentType) {
             Constant.TYPE_CREATE -> {
-
+                btn_updateSiswa.visibility = View.GONE
             }
             Constant.TYPE_READ -> {
+                btn_saveSiswa.visibility = View.GONE
+                btn_updateSiswa.visibility = View.GONE
+                getSiswa()
+            }
+            Constant.TYPE_UPDATE -> {
                 btn_saveSiswa.visibility = View.GONE
                 getSiswa()
             }

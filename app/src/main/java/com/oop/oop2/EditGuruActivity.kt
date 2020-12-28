@@ -1,34 +1,34 @@
-package com.example.crudapp
+package com.oop.oop2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.crudapp.Database.AppRoomDB
-import com.example.crudapp.Database.Constant
-import com.example.crudapp.Database.User
-import kotlinx.android.synthetic.main.activity_edit_helm.*
-import kotlinx.android.synthetic.main.activity_edit_user.*
+import com.oop.oop2.Database.AppRoomDB
+import com.oop.oop2.Database.Constant
+import  com.oop.oop2.Database.Guru
+import com.oop.oop2.R
+import kotlinx.android.synthetic.main.activity_edit_guru.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EditUserActivity : AppCompatActivity() {
+class EditGuruActivity : AppCompatActivity() {
 
     val db by lazy { AppRoomDB(this) }
-    private var userId: Int = 0
+    private var guruId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_user)
+        setContentView(R.layout.activity_edit_guru)
         setupListener()
         setupView()
     }
 
     fun setupListener(){
-        btn_saveUser.setOnClickListener{
+        btn_saveGuru.setOnClickListener{
             CoroutineScope(Dispatchers.IO).launch {
-                db.userDao().addUser(
-                    User(0, txt_nama.text.toString(), txt_username.text.toString())
+                db.guruDao().addGuru(
+                    Guru(0, txt_nama.text.toString(), txt_pengampu.text.toString())
                 )
                 finish()
             }
@@ -43,18 +43,18 @@ class EditUserActivity : AppCompatActivity() {
 
             }
             Constant.TYPE_READ -> {
-                btn_saveUser.visibility = View.GONE
-                getUser()
+                btn_saveGuru.visibility = View.GONE
+                getGuru()
             }
         }
     }
 
-    fun getUser() {
-        userId = intent.getIntExtra("intent_id", 0)
+    fun getGuru() {
+        guruId = intent.getIntExtra("intent_id", 0)
         CoroutineScope(Dispatchers.IO).launch {
-            val users =  db.userDao().getUser( userId )[0]
-            txt_nama.setText( users.nama )
-            txt_username.setText( users.username )
+            val guru =  db.guruDao().getGuru( guruId )[0]
+            txt_nama.setText( guru.nama )
+            txt_pengampu.setText( guru.pengampu )
         }
     }
 

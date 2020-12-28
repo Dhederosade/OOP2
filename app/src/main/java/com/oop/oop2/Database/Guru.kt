@@ -1,12 +1,12 @@
-package com.example.crudapp.Database
+package com.oop.oop2.Database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "user")
-data class User(
+@Entity(tableName = "guru")
+data class Guru(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo(name = "nama") val nama: String,
-    @ColumnInfo(name = "username") val username: String
+    @ColumnInfo(name = "pengampu") val pengampu: String
 )

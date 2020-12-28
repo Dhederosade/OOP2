@@ -28,6 +28,9 @@ class SiswaAdapter (private val AllSiswa: ArrayList<Siswa>, private val listener
         holder.view.icon_delete.setOnClickListener {
             listener.onDelete(siswa)
         }
+        holder.view.icon_edit.setOnClickListener {
+            listener.onUpdate(siswa)
+        }
     }
 
     class SiswaViewHolder(val view: View) : RecyclerView.ViewHolder(view)
@@ -41,5 +44,6 @@ class SiswaAdapter (private val AllSiswa: ArrayList<Siswa>, private val listener
     interface OnAdapterListener {
         fun onClick(siswa: Siswa)
         fun onDelete(siswa: Siswa)
+        fun onUpdate(siswa: Siswa)
     }
 }

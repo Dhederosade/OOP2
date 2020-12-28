@@ -8,10 +8,10 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/text_username"
+        android:id="@+id/text_nama"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="Username"
+        tools:text="Nama"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -51,11 +51,18 @@ class SiswaActivity : AppCompatActivity() {
     fun setupRecyclerView() {
         siswaAdapter = SiswaAdapter(arrayListOf(), object: SiswaAdapter.OnAdapterListener {
             override fun onClick(siswa: Siswa) {
+                // read detail
                 intentEdit(siswa.id, Constant.TYPE_READ)
             }
 
             override fun onDelete(siswa: Siswa) {
+                // delete data
                 deleteDialog(siswa)
+            }
+
+            override fun onUpdate(siswa: Siswa) {
+                // edit data
+                intentEdit(siswa.id, Constant.TYPE_UPDATE)
             }
 
         })

@@ -8,12 +8,12 @@ import com.oop.oop2.Database.Siswa
 import com.oop.oop2.Database.SiswaDao
 
 
-@Database(entities = arrayOf(Siswa::class), version = 1)
-// ,Guru::class
+@Database(entities = arrayOf(Siswa::class,Guru::class), version = 1)
+
 abstract class AppRoomDB : RoomDatabase() {
 
     abstract fun siswaDao(): SiswaDao
-//    abstract fun guruDao(): GuruDao
+   abstract fun guruDao(): GuruDao
 
     companion object {
 

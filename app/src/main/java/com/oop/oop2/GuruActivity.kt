@@ -1,4 +1,4 @@
-package com.example.crudapp
+package com.oop.oop2
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,74 +6,74 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.crudapp.Database.AppRoomDB
-import com.example.crudapp.Database.Constant
-import com.example.crudapp.Database.Helm
-import com.example.crudapp.Database.User
-import kotlinx.android.synthetic.main.activity_user.*
+import com.oop.oop2.Database.AppRoomDB
+import com.oop.oop2.Database.Constant
+import com.oop.oop2.Database.Guru
+import com.oop.oop2.R
+import kotlinx.android.synthetic.main.activity_guru.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class UserActivity : AppCompatActivity() {
+class GuruActivity : AppCompatActivity() {
 
     val db by lazy { AppRoomDB(this) }
-    lateinit var userAdapter: UserAdapter
+    lateinit var guruAdapter: GuruAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user)
+        setContentView(R.layout.activity_guru)
         setupListener()
         setupRecyclerView()
     }
 
     override fun onStart() {
         super.onStart()
-        loadUser()
+        loadGuru()
     }
 
-    fun loadUser() {
+    fun loadGuru() {
         CoroutineScope(Dispatchers.IO).launch {
-            val allUser = db.userDao().getAllUser()
-            Log.d("UserActivity", "dbResponse: $allUser")
+            val allGuru = db.guruDao().getAllGuru()
+            Log.d("GuruActivity", "dbResponse: $allGuru")
             withContext(Dispatchers.Main) {
-                userAdapter.setData(allUser)
+                guruAdapter.setData(allGuru)
             }
         }
     }
 
     fun setupListener() {
-        btn_createUser.setOnClickListener {
+        btn_createGuru.setOnClickListener {
             intentEdit(0, Constant.TYPE_CREATE)
         }
     }
 
     fun setupRecyclerView() {
-        userAdapter = UserAdapter(arrayListOf(), object: UserAdapter.OnAdapterListener {
-            override fun onClick(user: User) {
-                intentEdit(user.id, Constant.TYPE_READ)
+        guruAdapter = GuruAdapter(arrayListOf(), object: GuruAdapter.OnAdapterListener {
+            override fun onClick(guru: Guru) {
+                intentEdit(guru.id, Constant.TYPE_READ)
             }
-            override fun onDelete(user: User) {
-                deleteDialog(user)
+            override fun onDelete(guru: Guru) {
+                deleteDialog(guru)
             }
 
         })
-        list_user.apply {
+        list_guru.apply {
             layoutManager = LinearLayoutManager(applicationContext)
-            adapter = userAdapter
+            adapter = guruAdapter
         }
     }
 
-    fun intentEdit(userId: Int, intentType: Int ) {
+    fun intentEdit(guruId: Int, intentType: Int ) {
         startActivity(
-            Intent(applicationContext, EditUserActivity::class.java)
-                .putExtra("intent_id", userId)
+            Intent(applicationContext, EditGuruActivity::class.java)
+                .putExtra("intent_id", guruId)
                 .putExtra("intent_type", intentType)
         )
     }
 
-    private fun deleteDialog(user: User) {
+    private fun deleteDialog(guru: Guru) {
         val alertDialog = AlertDialog.Builder(this)
         alertDialog.apply {
             setTitle("Konfirmasi")
@@ -84,8 +84,8 @@ class UserActivity : AppCompatActivity() {
             setPositiveButton("Hapus") { dialogInterface, i ->
                 dialogInterface.dismiss()
                 CoroutineScope(Dispatchers.IO).launch {
-                    db.userDao().deleteUser(user)
-                    loadUser()
+                    db.guruDao().deleteGuru(guru)
+                    loadGuru()
                 }
             }
         }

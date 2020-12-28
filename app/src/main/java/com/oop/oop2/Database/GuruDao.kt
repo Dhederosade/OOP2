@@ -1,21 +1,21 @@
-package com.example.crudapp.Database
+package com.oop.oop2.Database
 
 import androidx.room.*
 
 @Dao
-interface UserDao {
+interface GuruDao {
     @Insert
-    suspend fun addUser(user: User)
+    suspend fun addGuru(guru: Guru)
 
     @Update
-    suspend fun updateUser(user: User)
+    suspend fun updateGuru(user: Guru)
 
     @Delete
-    suspend fun deleteUser(user: User)
+    suspend fun deleteGuru(user: Guru)
 
-    @Query("SELECT * FROM user")
-    suspend fun getAllUser(): List<User>
+    @Query("SELECT * FROM guru")
+    suspend fun getAllGuru(): List<Guru>
 
-    @Query("SELECT * FROM user WHERE id=:user_id")
-    suspend fun getUser(user_id: Int) : List<User>
+    @Query("SELECT * FROM guru WHERE id=:guru_id")
+    suspend fun getGuru(guru_id: Int) : List<Guru>
 }
