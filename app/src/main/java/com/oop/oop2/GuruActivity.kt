@@ -52,11 +52,19 @@ class GuruActivity : AppCompatActivity() {
     fun setupRecyclerView() {
         guruAdapter = GuruAdapter(arrayListOf(), object: GuruAdapter.OnAdapterListener {
             override fun onClick(guru: Guru) {
+                //read detail
                 intentEdit(guru.id, Constant.TYPE_READ)
             }
             override fun onDelete(guru: Guru) {
+                //delete data
                 deleteDialog(guru)
             }
+
+            override fun onUpdate(guru: Guru) {
+                // update data
+                intentEdit(guru.id, Constant.TYPE_UPDATE)
+            }
+
 
         })
         list_guru.apply {

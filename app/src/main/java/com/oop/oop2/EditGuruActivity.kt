@@ -33,6 +33,13 @@ class EditGuruActivity : AppCompatActivity() {
                 finish()
             }
         }
+        btn_updateGuru.setOnClickListener{
+            CoroutineScope(Dispatchers.IO).launch {
+                db.guruDao().updateGuru(
+                    Guru(guruId, txt_nama.text.toString(), txt_pengampu.text.toString()))
+                finish()
+            }
+        }
     }
 
     fun setupView() {
@@ -40,9 +47,14 @@ class EditGuruActivity : AppCompatActivity() {
         val intentType = intent.getIntExtra("intent_type", 0)
         when (intentType) {
             Constant.TYPE_CREATE -> {
-
+                btn_updateGuru.visibility = View.GONE
             }
             Constant.TYPE_READ -> {
+                btn_saveGuru.visibility = View.GONE
+                btn_updateGuru.visibility = View.GONE
+                getGuru()
+            }
+            Constant.TYPE_UPDATE -> {
                 btn_saveGuru.visibility = View.GONE
                 getGuru()
             }

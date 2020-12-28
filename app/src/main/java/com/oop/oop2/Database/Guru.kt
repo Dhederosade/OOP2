@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 data class Guru(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo(name = "nama") val nama: String,
-    @ColumnInfo(name = "pengampu") val pengampu: String
+    @ColumnInfo(name = "nipy") val pengampu: String
 )

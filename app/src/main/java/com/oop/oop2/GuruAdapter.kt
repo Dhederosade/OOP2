@@ -29,6 +29,9 @@ class GuruAdapter (private val AllGuru: ArrayList<Guru>, private val listener: O
         holder.view.icon_delete.setOnClickListener {
             listener.onDelete(guru)
         }
+        holder.view.icon_edit.setOnClickListener {
+            listener.onUpdate(guru)
+        }
     }
 
     class GuruViewHolder(val view: View) : RecyclerView.ViewHolder(view)
@@ -42,6 +45,7 @@ class GuruAdapter (private val AllGuru: ArrayList<Guru>, private val listener: O
     interface OnAdapterListener {
         fun onClick(guru: Guru)
         fun onDelete(guru: Guru)
+        fun onUpdate(guru : Guru)
     }
 
 }
