@@ -61,7 +61,7 @@ class SiswaActivity : AppCompatActivity() {
             }
 
             override fun onUpdate(siswa: Siswa) {
-                // edit data
+                // update data
                 intentEdit(siswa.id, Constant.TYPE_UPDATE)
             }
 
