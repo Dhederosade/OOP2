@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="259dp"
         android:layout_marginBottom="36dp"
-        android:text="User"
+        android:text="Guru"
         app:layout_constraintBottom_toTopOf="@+id/btn_siswa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

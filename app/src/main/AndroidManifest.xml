@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.oop.oop2.MainActivity">
+        <activity android:name=".SiswaAdapter"></activity>
+        <activity android:name=".GuruAdapter"></activity>
+        <activity android:name=".EditSiswaActivity" />
+        <activity android:name=".SiswaActivity" />
+        <activity android:name=".EditGuruActivity" />
+        <activity android:name=".GuruActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
