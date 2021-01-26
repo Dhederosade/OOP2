@@ -6,3 +6,5 @@ Anggota 2 = Hikmatul Febiannisa 18090079 5A
 - Database using room
 
 - Data Siswa & Data Guru
+
+- Data Jadwal (Firebase)

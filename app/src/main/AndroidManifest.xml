@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SiswaAdapter"></activity>
-        <activity android:name=".GuruAdapter"></activity>
+        <activity android:name=".JadwalActivity"></activity>
+        <activity android:name=".FormJadwalActivity" />
         <activity android:name=".EditSiswaActivity" />
         <activity android:name=".SiswaActivity" />
         <activity android:name=".EditGuruActivity" />

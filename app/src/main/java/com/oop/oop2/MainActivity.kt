@@ -20,5 +20,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, GuruActivity::class.java)
             startActivity(intent)
         }
+        btn_jadwal.setOnClickListener{
+            val intent = Intent(this, JadwalActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
